@@ -6,13 +6,15 @@ import { Login } from "./components/loginpage/Login";
 
 function App() {
   const [userDatas, setUserDatas] = useState({
-    username: "asqanaz",
-    password: "asqo1234",
+    username: "1",
+    password: "2",
   });
 
   useEffect(() => {
-    localStorage.setItem("userDatas", JSON.stringify(userDatas));
+    sessionStorage.setItem("userDatas", JSON.stringify(userDatas));
   }, [userDatas]);
+
+  console.log(userDatas)
 
   return (
     <Router>

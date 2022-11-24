@@ -1,58 +1,80 @@
-import React, { useEffect, useState } from "react";
-import { Link, Navigate, redirect } from "react-router-dom";
+import React, { useEffect, useState } from "react"
+import { useForm } from "react-hook-form"
+import { Link, Navigate, redirect } from "react-router-dom"
 
 export const PasswordEdit = ({ userDatas, setUserDatas }) => {
-  const [currentUser, setCurrentUser] = useState("");
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [newUser, setNewUser] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [isValid, setIsValid] = useState();
+	const { register, formState: {isValid, errors}, handleSubmit } = useForm()
 
-  console.log(userDatas);
+  const [customIsValid, setCustomIsValid] = useState(isValid)
 
-  console.log(isValid)
-
-  const handleChangeDatas = () => {
-    if (
-      currentUser === userDatas.username &&
-      currentPassword === userDatas.password
-    ) {
-      setUserDatas({
-        username: newUser,
-        password: newPassword,
-      });
-      setIsValid(true);
-    } else {
-      setIsValid(false);
+	const handleChangeDatas = (data) => {
+		if (data.currentUserName === userDatas.username && data.currentPassword === userDatas.password) {
+			setUserDatas({
+				username: data.newUserName,
+				password: data.newPassword
+			})
+      setCustomIsValid(true)
+      
+		}
+    else{
+      setCustomIsValid(false)
     }
-  };
-  return (
-    <form>
-      <div>
-        <span>Current UserName</span>
-        <input type="text" onChange={(e) => setCurrentUser(e.target.value)} />
-      </div>
-      <div>
-        <span>Current Password</span>
-        <input
-          type="text"
-          onChange={(e) => setCurrentPassword(e.target.value)}
-        />
-      </div>
-      <div>
-        <span>New UserName</span>
-        <input type="text" onChange={(e) => setNewUser(e.target.value)} />
-      </div>
-      <div>
-        <span>New Password</span>
-        <input type="text" onChange={(e) => setNewPassword(e.target.value)} />
-      </div>
+	}
 
-      {isValid ? <Navigate to="/login" replace /> : <h2>Not valid</h2>}
+  console.log(customIsValid)
+	return (
+		<form
+			className="form-container"
+			onSubmit={handleSubmit(handleChangeDatas)}
+		>
+			<div className="form-fields">
+				<span>Current UserName</span>
+				<input
+					type="text"
+					{...register("currentUserName", {
+            required: "Required field"
+          })}
+				/>,
+        <div>
 
-      <button type="submit" onClick={handleChangeDatas}>
-        Edit datas
-      </button>
-    </form>
-  );
-};
+        </div>
+			</div>
+			<div className="form-fields">
+				<span>Current Password</span>
+				<input
+					type="text"
+					{...register("currentPassword", {
+            require: "Required field",
+          })}
+				/>
+        <div>
+        </div>
+			</div>
+			<div className="form-fields">
+				<span>New UserName</span>
+				<input
+					type="text"
+					{...register("newUserName", {
+            require: "Required field",
+          })}
+				/>
+        <div>
+
+        </div>
+			</div>
+			<div className="form-fields">
+				<span>New Password</span>
+				<input
+					type="text"
+					{...register("newPassword", {
+            require: "Required field",
+          })}
+				/>
+        <div>
+
+        </div>
+			</div>
+      <button>Edit datas</button>
+		</form>
+	)
+}
