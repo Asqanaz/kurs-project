@@ -14,3 +14,13 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.back-to-login{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.back-to-login a{
+    margin: 20px 0;
+}

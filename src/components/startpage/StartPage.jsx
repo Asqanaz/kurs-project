@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { redirect, Navigate } from "react-router-dom";
 import "./home.css";
 
-export const Home = () => {
+export const StartPage = () => {
   const [redirectToLogin, setRedirectToLogin] = useState(false);
   useEffect(() => {
     setTimeout(() => {
       setRedirectToLogin(true);
-    }, 15000);
+    }, 5000);
   }, []);
 
   return (
