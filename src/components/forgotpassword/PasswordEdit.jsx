@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, Navigate, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const PasswordEdit = ({ userDatas, setUserDatas }) => {
   const {
@@ -19,9 +19,6 @@ export const PasswordEdit = ({ userDatas, setUserDatas }) => {
       });
       reset()
     }
-
-    // setError("currentUserName", { type: "validate" }, { shouldFocus: false });
-    // setError("currentPassword", { type: "validate" }, { shouldFocus: false });
 
     reset();
   };
@@ -55,7 +52,7 @@ export const PasswordEdit = ({ userDatas, setUserDatas }) => {
                 return "UserDatas doesn't match";
               }
               return true;
-            },
+            }
           })}
         />
       </div>
@@ -79,7 +76,7 @@ export const PasswordEdit = ({ userDatas, setUserDatas }) => {
       </div>
       <div className="back-to-login">
         <p>
-          {errors?.currentPassword?.message || errors?.currentUserName?.message}
+          {errors?.currentPassword?.message || errors?.currentUserName?.message ? errors.currentPassword.message : "Datas successfully changed"}
         </p>
         <Link to="/login">Back to login</Link>
         <button type="submit">Edit Datas</button>

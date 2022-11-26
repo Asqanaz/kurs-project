@@ -14,15 +14,20 @@ function App() {
     sessionStorage.setItem("userDatas", JSON.stringify(userDatas));
   }, [userDatas]);
 
-  console.log(userDatas)
+  console.log(userDatas);
 
   return (
     <Router>
       <div className="app">
         <Routes>
           <Route path="/" element={<StartPage />} />
-          <Route path="/login" element={<Login userDatas = {userDatas}/>} />
-          <Route path="/forgot-password" element={<PasswordEdit userDatas = {userDatas} setUserDatas = {setUserDatas}/>} />
+          <Route path="/login" element={<Login userDatas={userDatas} />} />
+          <Route
+            path="/forgot-password"
+            element={
+              <PasswordEdit userDatas={userDatas} setUserDatas={setUserDatas} />
+            }
+          />
         </Routes>
       </div>
     </Router>
