@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import TextField from "@mui/material/TextField";
+import { MdPassword } from "react-icons/md";
+import { AiOutlineUser } from "react-icons/ai";
+import Box from "@mui/material/Box";
+import FormHelperText from '@mui/material/FormHelperText';
 
 export const Login = ({ userDatas }) => {
   const {
@@ -13,14 +18,19 @@ export const Login = ({ userDatas }) => {
     console.log(data);
   };
 
-  console.log(isValid);
+  console.log(errors);
   return (
-    <form className="flex justify-center items-center flex-col container h-[50vh]" onSubmit={handleSubmit(handleOnSubmit)}>
-      <div>
-        <h2 className="font-bold text-4xl text-center">Login</h2>
-        <span>User Name</span>
-        <input
-          type="text"
+    <form
+      className="flex justify-center items-center flex-col container h-[50vh] w-80 form-container"
+      onSubmit={handleSubmit(handleOnSubmit)}
+    >
+      <h2 className="font-bold text-4xl text-center">Login</h2>
+      <Box sx={{ display: "flex", alignItems: "flex-end", marginTop: "1rem", justifyContent: "space-around", width: 100 + "%" }}>
+        <AiOutlineUser size={24} />
+        <TextField
+          id="input-with-sx"
+          label="User Name"
+          variant="standard"
           {...register("login", {
             required: "Required field",
             validate: (value) => {
@@ -31,14 +41,14 @@ export const Login = ({ userDatas }) => {
               return true;
             },
           })}
-          className = "rounded-xl border-gray-600 border"          
         />
-      </div>
-      <br />
-      <div>
-        <span>Password</span>
-        <input
-          type="text"
+      </Box>
+      <Box sx={{ display: "flex", alignItems: "flex-end", marginTop: "1rem", justifyContent: "space-around", width: 100 + "%"}}>
+        <MdPassword size={24} />
+        <TextField
+          id="input-with-sx"
+          label="Password"
+          variant="standard"
           {...register("password", {
             required: "Required field",
             validate: (value) => {
@@ -48,18 +58,14 @@ export const Login = ({ userDatas }) => {
               return true;
             },
           })}
-          className = "rounded-xl border-gray-600 border"          
         />
-      </div>
-
-      <Link to="/forgot-password">Forgot password?</Link>
-      {isValid ? (
-        <Link to="/home">
-          <button type="submit" className="w-2xl">{isValid ? "Home" : "Enter"}</button>
-        </Link>
-      ) : (
-        <button type="submit" className="w-36 border rounded-xl bg-gray-200">{isValid ? "Home" : "Enter"}</button>
-      )}
+      </Box>
+      <FormHelperText sx = {{color: 'red', marginTop: 2 + "rem"}}>{errors?.login?.message}</FormHelperText>
+      <Link to="/forgot-password" className="mt-3">Forgot password?</Link>
+      {/* <Link to = "/home">
+      </Link> */}
+      <button className="w-full h-10 rounded-2xl border hover:border-violet-600 bg-white-600 text-grey-500 mt-5">Submit</button>
+        
     </form>
   );
 };
