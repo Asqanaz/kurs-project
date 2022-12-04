@@ -7,8 +7,7 @@ export const PasswordEdit = ({ userDatas, setUserDatas }) => {
     register,
     formState: { isValid, errors },
     handleSubmit,
-    reset,
-    setError,
+    reset
   } = useForm({ mode: "onSubmit", reValidateMode: "onSubmit" });
 
   const handleChangeDatas = (data) => {

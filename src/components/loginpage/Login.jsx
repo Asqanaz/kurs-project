@@ -28,7 +28,6 @@ export const Login = ({ userDatas }) => {
       <Box sx={{ display: "flex", alignItems: "flex-end", marginTop: "1rem", justifyContent: "space-around", width: 100 + "%" }}>
         <AiOutlineUser size={24} />
         <TextField
-          id="input-with-sx"
           label="User Name"
           variant="standard"
           {...register("login", {
@@ -41,6 +40,7 @@ export const Login = ({ userDatas }) => {
               return true;
             },
           })}
+          sx = {{'&:focus': {backgroundColor: "green"}}}
         />
       </Box>
       <Box sx={{ display: "flex", alignItems: "flex-end", marginTop: "1rem", justifyContent: "space-around", width: 100 + "%"}}>
@@ -62,8 +62,6 @@ export const Login = ({ userDatas }) => {
       </Box>
       <FormHelperText sx = {{color: 'red', marginTop: 2 + "rem"}}>{errors?.login?.message}</FormHelperText>
       <Link to="/forgot-password" className="mt-3">Forgot password?</Link>
-      {/* <Link to = "/home">
-      </Link> */}
       <button className="w-full h-10 rounded-2xl border hover:border-violet-600 bg-white-600 text-grey-500 mt-5">Submit</button>
         
     </form>
