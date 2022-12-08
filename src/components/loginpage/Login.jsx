@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import {Link} from "react-router-dom"
+import {Link, Navigate, useNavigate} from "react-router-dom"
 import {useForm} from "react-hook-form"
 import TextField from "@mui/material/TextField"
 import {MdPassword} from "react-icons/md"
@@ -8,17 +8,18 @@ import Box from "@mui/material/Box"
 import FormHelperText from "@mui/material/FormHelperText"
 
 export const Login = ({userDatas}) => {
+	const navigate = useNavigate()
+
 	const {
 		register,
-		formState: {errors},
+		formState: {errors, isValid},
 		handleSubmit
 	} = useForm({mode: "onSubmit", reValidateMode: "onSubmit"})
 
 	const handleOnSubmit = data => {
-		console.log(data)
+		isValid && navigate("/home")
 	}
 
-	console.log(errors)
 	return (
 		<form
 			className="flex justify-center items-center flex-col container h-[50vh] w-80 form-container"
@@ -36,6 +37,7 @@ export const Login = ({userDatas}) => {
 			>
 				<AiOutlineUser size={24} />
 				<TextField
+					type="text"
 					label="User Name"
 					variant="standard"
 					{...register("login", {
@@ -61,6 +63,7 @@ export const Login = ({userDatas}) => {
 			>
 				<MdPassword size={24} />
 				<TextField
+					type="password"
 					label="Password"
 					variant="standard"
 					{...register("password", {
@@ -74,15 +77,13 @@ export const Login = ({userDatas}) => {
 					})}
 				/>
 			</Box>
-			<FormHelperText sx={{color: "red", marginTop: 1 + "rem"}}>
+			<FormHelperText error sx={{marginTop: 1 + "rem"}}>
 				{errors?.login?.message || errors?.password?.message}
 			</FormHelperText>
 			<Link to="/forgot-password" className="mt-6">
 				Forgot password?
 			</Link>
-			<button className="w-full h-10 rounded-2xl border hover:border-violet-600 bg-white-600 text-grey-500 mt-5">
-				Submit
-			</button>
+			<button className="w-full h-10 mt-5">Submit</button>
 		</form>
 	)
 }

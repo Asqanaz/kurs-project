@@ -6,6 +6,7 @@ import Box from "@mui/material/Box"
 import FormHelperText from "@mui/material/FormHelperText"
 
 export const PasswordEdit = ({userDatas, setUserDatas}) => {
+	const [message, setMessage] = useState("")
 	const {
 		register,
 		formState: {isValid, errors},
@@ -19,12 +20,12 @@ export const PasswordEdit = ({userDatas, setUserDatas}) => {
 				username: data.newUserName,
 				password: data.newPassword
 			})
+			setMessage("Datas successfully changed")
 			reset()
 		}
 
 		reset()
 	}
-
 
 	console.log(errors)
 	return (
@@ -39,6 +40,7 @@ export const PasswordEdit = ({userDatas, setUserDatas}) => {
 				}}
 			>
 				<TextField
+					type={"text"}
 					label="Current User Name"
 					variant="standard"
 					{...register("currentUserName", {
@@ -63,6 +65,7 @@ export const PasswordEdit = ({userDatas, setUserDatas}) => {
 				}}
 			>
 				<TextField
+					type={"password"}
 					label="Current Password"
 					variant="standard"
 					{...register("currentPassword", {
@@ -87,6 +90,7 @@ export const PasswordEdit = ({userDatas, setUserDatas}) => {
 				}}
 			>
 				<TextField
+					type={"text"}
 					label="New User Name"
 					variant="standard"
 					{...register("newUserName", {
@@ -104,6 +108,7 @@ export const PasswordEdit = ({userDatas, setUserDatas}) => {
 				}}
 			>
 				<TextField
+					type={"password"}
 					label="New Password"
 					variant="standard"
 					{...register("newPassword", {
@@ -112,9 +117,14 @@ export const PasswordEdit = ({userDatas, setUserDatas}) => {
 				/>
 			</Box>
 			<div className="back-to-login flex flex-col justify-center items-center mt-6">
-				<FormHelperText>{errors?.currentUserName?.message || errors?.currentPassword?.message || "Data"}</FormHelperText>
+				<FormHelperText
+					error={Object.values(errors).length ? true : false}
+					sx={{color: "green", marginBottom: 8 + "px"}}
+				>
+					{errors?.currentUserName?.message || errors?.currentPassword?.message || message}
+				</FormHelperText>
 				<Link to="/login">Back to login</Link>
-				<button type="submit" className="mt-5">
+				<button type="submit" className="mt-5 w-full py-2">
 					Edit Datas
 				</button>
 			</div>
