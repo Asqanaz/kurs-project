@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { redirect, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const StartPage = () => {
-  const [redirectToLogin, setRedirectToLogin] = useState(false);
+  const navigate = useNavigate()
   useEffect(() => {
     setTimeout(() => {
-      setRedirectToLogin(true);
-    }, 5000);
+      navigate('/login')
+    }, 2000);
   }, []);
 
   return (
     <div className="container">
-      {redirectToLogin && <Navigate to="/login" replace />}
+      
     </div>
   );
 };

@@ -5,30 +5,21 @@ export const Home = () => {
 	const [advice, setAdvice] = useState()
 
 	useEffect(() => {
-    getText()
-  }, [])
+		getText()
+	}, [])
   
-  console.log(advice)
 	async function getText() {
 		await fetch("/kurs.txt")
-			.then(response => response.blob())
-			.then(text => setAdvice(text))
+		.then(response => response.text())
+		.then(text => setAdvice(text))
 	}
+		
+	console.log(advice)
 
-	// useEffect(() => {
-	// 	let fileReader = new FileReader()
-	// 	fileReader.readAsText(advice)
-	// 	fileReader.onloadend = function (e) {
-	// 		console.log(e.target)
-	// 	}
-	// })
-
-
-	// console.log(advice)
 	return (
 		<div>
-			{/* <h1>{advice}</h1> */}
+			<h1>{advice}</h1>
 			<button>Close</button>
 		</div>
 	)
-}
+}	
