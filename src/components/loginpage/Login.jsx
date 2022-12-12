@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import {Link, Navigate, useNavigate} from "react-router-dom"
+import {Link, Navigate, useLocation, useNavigate} from "react-router-dom"
 import {useForm} from "react-hook-form"
 import TextField from "@mui/material/TextField"
 import {MdPassword} from "react-icons/md"
@@ -9,6 +9,7 @@ import FormHelperText from "@mui/material/FormHelperText"
 
 export const Login = ({userDatas}) => {
 	const navigate = useNavigate()
+	const location = useLocation()
 
 	const {
 		register,
@@ -80,10 +81,11 @@ export const Login = ({userDatas}) => {
 			<FormHelperText error sx={{marginTop: 1 + "rem"}}>
 				{errors?.login?.message || errors?.password?.message}
 			</FormHelperText>
-			<Link to="/forgot-password" className="mt-6">
-				Forgot password?
+			<Link to="/change-password" className="mt-6">
+				Change password
 			</Link>
 			<button className="w-full h-10 mt-5">Submit</button>
+			<Link to = "/" state={{from: location.pathname}} className = "w-full mt-5"><button className="w-full h-10">Cancel</button></Link>
 		</form>
 	)
 }
