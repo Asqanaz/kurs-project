@@ -26,7 +26,9 @@ export const Home = () => {
 			<div className="w-full bg-blue-700">
 				<ul className="list-none flex flex-row w-2/3 justify-between items-center p-2">
 					<li className="cursor-pointer text-xs">
-						<NavLink to="/home/exercise">Course Work</NavLink>
+						<NavLink to="/home/exercise">
+							Խնդիր
+						</NavLink>
 					</li>
 					<li className="cursor-pointer text-xs">
 						<NavLink to="/home/tip-of-the-day">Օրվա խորհուրդներ</NavLink>
@@ -42,11 +44,11 @@ export const Home = () => {
 						<span>Դասավորել</span>
 						{dropOpen && (
 							<ul
-								className="w-[78px] bg-green-700 flex-col flex justify-center items-center absolute top-[100%] gap-2 z-10"
+								className="w-[78px] bg-blue-700 p-2 flex-col flex justify-center items-center absolute top-[100%] gap-2 z-10"
 								onClick={e => e.stopPropagation()}
 							>
-								<li>Abcd</li>
-								<li>Abcd</li>
+								<li>Ուղղահայաց</li>
+								<li>Minimaze</li>
 							</ul>
 						)}
 					</li>

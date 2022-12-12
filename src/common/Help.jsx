@@ -9,10 +9,10 @@ export const Help = () => {
   }, [])
   return (
     <>
-      <div className='w-2/3 bg-black text-white p-5 overflow-y-scroll'>
+      <div className='w-2/3 bg-blue-900 text-white p-5 overflow-y-scroll'>
         <p className='text-white'>{text}</p>
       </div>
-      <Link to = "/home" className = "w-1/2 h-[64px]"><button className='w-full text-white'>Ok</button></Link>
+      <Link to = "/home" className = "w-1/2 h-[64px]"><button className='w-full text-white bg-blue-900'>Ok</button></Link>
     </>
   )
 }

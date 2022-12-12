@@ -8,7 +8,7 @@ export const Modal = ({isOpen, setIsOpen}) => {
 			onClick={() => setIsOpen(false)}
 		>
 			<div
-				className="w-[435px] h-1/2 p-6 flex flex-col justify-center items-center bg-gray-600 z-50 rounded-2xl gap-16"
+				className="w-[435px] h-1/2 p-6 flex flex-col justify-center items-center bg-blue-400 z-50 rounded-2xl gap-16"
 				onClick={e => e.stopPropagation()}
 			>
 				<span>Դուք արդյոք ցանկանում եք դուրս գալ ծրագրից</span>

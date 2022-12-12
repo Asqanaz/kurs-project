@@ -1,59 +1,48 @@
-	@keyframes start-anim {
-	from {
-		transform: translateY(0);
-	}
-
-	15% {
-		transform: translateY(-230%);
-	}
-
-	30% {
-		transform: translateY(0);
-	}
-
-	45% {
-		transform: translateX(-150%);
-	}
-
-	60% {
-		transform: translate(-150%, -230%);
-	}
-	75% {
-		transform: translate(-150%, 0%);
-	}
-	90% {
-		transform: translateX(-300%);
-	}
-	100% {
-		transform: translate(-300%, -230%);
-	}
-
+.main {
+  width: 830px;
+  height: 400px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 50%;
 }
 
 .container-animation {
-	animation: start-anim 10s infinite;
+  animation: circle 5s linear infinite;
 }
 
-.active{
-	color: #000;
+@keyframes circle {
+  0% {
+    transform: rotate(0deg) translate(-165px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(-165px) rotate(-360deg);
+  }
 }
 
-td{
-	padding: 20px;
+
+.active {
+  color: #000;
 }
 
-input{
-	height: 30px;
-	border-radius: 10px;
-	padding: 4px;
-	color: rgb(0, 0, 0);
-	background: rgb(125, 125, 125);
+td {
+  padding: 20px;
 }
 
-textarea{
-	background: rgb(126, 126, 126);
-}
-input::-webkit-outer-spin-button{
-	display: none;
+input {
+  height: 30px;
+  border-radius: 10px;
+  padding: 4px;
+  color: rgb(0, 0, 0);
+  background: rgb(125, 125, 125);
 }
 
+textarea {
+  background: rgb(126, 126, 126);
+}
+input::-webkit-outer-spin-button {
+  display: none;
+}
