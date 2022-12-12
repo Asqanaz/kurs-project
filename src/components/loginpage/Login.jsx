@@ -82,7 +82,7 @@ export const Login = ({userDatas}) => {
 				{errors?.login?.message || errors?.password?.message}
 			</FormHelperText>
 			<Link to="/change-password" className="mt-6">
-				Change password
+				Change user datas
 			</Link>
 			<button className="w-full h-10 mt-5">Submit</button>
 			<Link to = "/" state={{from: location.pathname}} className = "w-full mt-5"><button className="w-full h-10">Cancel</button></Link>

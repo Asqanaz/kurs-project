@@ -7,7 +7,7 @@ export const StartPage = () => {
 		if (!location.state) {
 			setTimeout(() => {
 				navigate("/login")
-			}, 12000)
+			}, 15000)
 		}
 	}, [])
 
