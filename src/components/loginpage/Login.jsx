@@ -36,8 +36,8 @@ export const Login = ({userDatas}) => {
 					width: 100 + "%"
 				}}
 			>
-				<AiOutlineUser size={24} />
-				<TextField
+				<span>User Name</span>
+				<input
 					type="text"
 					label="User Name"
 					variant="standard"
@@ -62,11 +62,9 @@ export const Login = ({userDatas}) => {
 					width: 100 + "%"
 				}}
 			>
-				<MdPassword size={24} />
-				<TextField
+				<span>Password</span>
+				<input
 					type="password"
-					label="Password"
-					variant="standard"
 					{...register("password", {
 						required: "Required field",
 						validate: value => {
@@ -82,7 +80,9 @@ export const Login = ({userDatas}) => {
 				{errors?.login?.message || errors?.password?.message}
 			</FormHelperText>
 			<button className="w-full h-10 mt-5">Submit</button>
-			<Link to = "/" state={{from: location.pathname}} className = "w-full mt-5"><button className="w-full h-10">Cancel</button></Link>
+			<Link to="/" state={{from: location.pathname}} className="w-full mt-5">
+				<button className="w-full h-10">Cancel</button>
+			</Link>
 		</form>
 	)
 }
